@@ -180,7 +180,7 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
             waiting.setVisibility(View.INVISIBLE);
             load.setVisibility(View.INVISIBLE);
             rvListFoto.setVisibility(View.VISIBLE);
-            Toast.makeText(activity, "Anda Offline, Data dari database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Anda Offline, Data akan diambil dari database", Toast.LENGTH_SHORT).show();
             List<galery> listDataFoto = basisData.dataFotoDao().getAllDataFoto();
             List<Foto> fotoItemList = new ArrayList<>();
             for(galery galery : listDataFoto){
