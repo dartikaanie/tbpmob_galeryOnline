@@ -180,7 +180,7 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
             waiting.setVisibility(View.INVISIBLE);
             load.setVisibility(View.INVISIBLE);
             rvListFoto.setVisibility(View.VISIBLE);
-            Toast.makeText(activity, "Data dari database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Anda Offline, Data dari database", Toast.LENGTH_SHORT).show();
             List<galery> listDataFoto = basisData.dataFotoDao().getAllDataFoto();
             List<Foto> fotoItemList = new ArrayList<>();
             for(galery galery : listDataFoto){
@@ -196,14 +196,13 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
                 );
                 fotoItemList.add(m);
             }
-
-            if(status_data!=1){
+            fotoAdapter.setDataFoto(new ArrayList<Foto>(fotoItemList));
+            if(listDataFoto.isEmpty()){
                 load.setVisibility(View.VISIBLE);
                 load.setText("Data tidak ada, Silakan hidupkan koneksi internet");
                 noData.setVisibility(View.VISIBLE);
                 waiting.setVisibility(View.INVISIBLE);
             }
-            Log.e("list item", String.valueOf(fotoItemList.size()));
 
         }
     }
@@ -217,7 +216,6 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
             record.path_foto=m.getPath_foto();
             record.lat=m.getLat();
             record.lng=m.getLng();
-            record.fav=0;
 
             //lokasi
             StringBuilder result = new StringBuilder();

@@ -18,11 +18,8 @@ public interface galeryDao {
     //method
     List<galery> getAllDataFoto();
 
-    @Insert
-    void insertDataFoto(galery...galeries);
-    //artinya bisa banyak data sekaligus. kata awal merupakan objek dan kata kedua adalah data
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertDataFoto(galery galeries);
 
     @Query("SELECT * FROM galery_online WHERE id =:id")
