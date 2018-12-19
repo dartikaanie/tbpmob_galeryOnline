@@ -122,7 +122,7 @@ public class addFragment extends Fragment {
                 "Batal"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setTitle("Add Photo!");
+        builder.setTitle("Pilih Foto!");
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -135,7 +135,7 @@ public class addFragment extends Fragment {
                     intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_FILE);
+                    startActivityForResult(Intent.createChooser(intent, "Pilih Foto"), SELECT_FILE);
                 } else if (items[item].equals("Batal")) {
                     dialog.dismiss();
                 }
