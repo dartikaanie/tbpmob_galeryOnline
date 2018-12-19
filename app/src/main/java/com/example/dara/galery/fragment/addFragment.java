@@ -344,10 +344,11 @@ public class addFragment extends Fragment {
                 double lng = location.getLongitude();
                 latitude = String.valueOf(lat);
                 longtitude = String.valueOf(lng);
-                ETlokasi.setText("Latitude" + latitude +", longitute"+ longtitude);
+                ETlokasi.setText("Lat  :" + latitude +'\n'+", long  :"+ longtitude);
             }
             else{
-                Toast.makeText(getActivity(),"TIDAK TAMPIL LOKASINYA YA", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Lokasi Gagal diambil", Toast.LENGTH_SHORT).show();
+                getLocation();
             }
         }
    }
