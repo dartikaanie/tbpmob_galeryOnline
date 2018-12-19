@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,12 +65,14 @@ public class addFragment extends Fragment {
     //untuk location
     private static  final  int REQUEST_LOCATION =1;
     private EditText ETnama, ETdeskripsi, ETlokasi;
-    TextView TextAlert;
+    TextView TextAlert,simpanText;
     private Button tambahBtn, button_location;
     LocationManager locationManager;
     String latitude, longtitude;
     Menu refresh;
     int status_image;
+    ProgressBar simpanProgres;
+
 
     private Activity activity;
 
@@ -209,6 +212,13 @@ public class addFragment extends Fragment {
         ETlokasi = view.findViewById(R.id.edit_text_lat);
         tambahBtn = view.findViewById(R.id.tambah_foto);
         button_location = view.findViewById(R.id.button_location);
+        simpanProgres = view.findViewById(R.id.simpanProgress);
+        simpanText = view.findViewById(R.id.simpanData);
+
+        simpanProgres.setVisibility(View.INVISIBLE);
+        simpanText.setVisibility(View.INVISIBLE);
+        tambahBtn.setVisibility(View.VISIBLE);
+
 //        TextView = view.findViewById(R.id.text_location);
 
         //klik button_location
@@ -247,6 +257,9 @@ public class addFragment extends Fragment {
                 }else{
 
                     if(((MainActivity)activity).konekkah()){
+                        simpanProgres.setVisibility(View.VISIBLE);
+                        simpanText.setVisibility(View.VISIBLE);
+                        tambahBtn.setVisibility(View.INVISIBLE);
                         String nama = ETnama.getText().toString();
                         String deskripsi = ETdeskripsi.getText().toString();
                         Double lat = Double.valueOf(latitude);
@@ -265,6 +278,10 @@ public class addFragment extends Fragment {
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                 ResponseBody s = response.body();
                                 Toast.makeText(activity, "berhasil disimpan", Toast.LENGTH_LONG).show();
+                                ((MainActivity) activity).getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.fl_container, new galeryFragment(), "galeryFragment")
+                                        .commit();
+
                             }
 
                             @Override

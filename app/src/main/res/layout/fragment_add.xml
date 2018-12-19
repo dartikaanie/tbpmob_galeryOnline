@@ -139,7 +139,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:drawableLeft="@drawable/add2"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:text="Tambah" />
+
+            <ProgressBar
+                android:id="@+id/simpanProgress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/simpanData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:text="Tunggu, Data sedang disimpan"
+                android:visibility="invisible" />
 
         </LinearLayout>
     </ScrollView>
