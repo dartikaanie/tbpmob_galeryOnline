@@ -27,7 +27,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dara.galery.DatabaseHandler;
 import com.example.dara.galery.DetailActivity;
 import com.example.dara.galery.Foto;
 import com.example.dara.galery.FotoAdapter;
@@ -57,7 +56,7 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
     static TextView load;
     static ImageView noData;
 
-    static DatabaseHandler handler;
+
     static Foto dataFoto;
     ArrayList<Foto> fotoList;
     static Activity activity;
@@ -69,7 +68,6 @@ public class galeryFragment extends Fragment implements FotoAdapter.OnItemClicke
     public void onAttach(Context context) {
         super.onAttach(context);
         this.activity = (Activity) context;
-         handler = new DatabaseHandler(context);
          dataFoto = new Foto();
     }
 

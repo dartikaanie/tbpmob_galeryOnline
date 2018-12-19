@@ -7,16 +7,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -34,24 +31,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dara.galery.DatabaseHandler;
-import com.example.dara.galery.Foto;
 import com.example.dara.galery.MainActivity;
 import com.example.dara.galery.R;
 import com.example.dara.galery.TmdbClient;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -82,14 +71,12 @@ public class addFragment extends Fragment {
     Menu refresh;
     int status_image;
 
-    DatabaseHandler handler;
     private Activity activity;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.activity = (Activity) context;
-        handler = new DatabaseHandler(context);
     }
 
     @Override
@@ -140,15 +127,16 @@ public class addFragment extends Fragment {
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (items[item].equals("Take Photo")) {
+                if (items[item].equals("Ambil Foto")) {
                     intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, REQUEST_CAMERA);
-                } else if (items[item].equals("Choose from Library")) {
+
+                } else if (items[item].equals("Ambil dari Galery")) {
                     intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_FILE);
-                } else if (items[item].equals("Cancel")) {
+                } else if (items[item].equals("Batal")) {
                     dialog.dismiss();
                 }
             }
