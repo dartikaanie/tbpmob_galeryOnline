@@ -348,7 +348,6 @@ public class addFragment extends Fragment {
             }
             else{
                 Toast.makeText(getActivity(),"Lokasi Gagal diambil", Toast.LENGTH_SHORT).show();
-                getLocation();
             }
         }
    }
